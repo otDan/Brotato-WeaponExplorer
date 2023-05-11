@@ -38,18 +38,7 @@ func _ready():
 
 func init() -> void:
 	_on_viewport_size_changed()
-	WeaponExplorer.selected_character = null
-	start_run_button.disabled = true
-
-	for child in weapon_container.get_children():
-		weapon_container.remove_child(child)
-
-	for child in mod_container.get_children():
-		mod_container.remove_child(child)
-
-	character_toggle_dictionary.clear()
-	for child in character_container.get_children():
-		character_container.remove_child(child)
+	reset()
 
 	var first_item: Button = null
 	for weapon in ItemService.weapons:
@@ -95,6 +84,24 @@ func init() -> void:
 	first_item.grab_focus()
 
 
+func reset() -> void:
+	WeaponExplorer.selected_character = null
+	start_run_button.disabled = true
+
+	for child in weapon_container.get_children():
+		weapon_container.remove_child(child)
+
+	for child in mod_container.get_children():
+		mod_container.remove_child(child)
+
+	character_toggle_dictionary.clear()
+	for child in character_container.get_children():
+		character_container.remove_child(child)
+
+	reset_preview_player()
+	reset_dummy()
+
+
 func get_string_after_character(a: String, character: String) -> String:
 	var parts = a.split(character)
 	if parts.size() > 1:
@@ -108,16 +115,8 @@ func weapon_toggle_focus_entered(weapon_data: WeaponData) -> void:
 	start_run_button.disabled = true
 	weapon_panel_ui.set_data(weapon_data)
 
-	var weapons = preview_player.current_weapons.duplicate()
-	for weapon in weapons:
-		weapon.queue_free()
-	preview_player.current_weapons.clear()
-
-	dummy._burning = null
-	dummy._burning_timer.stop()
-	dummy._burning_particles.emitting = false
-	dummy._burning_particles.deactivate_spread()
-	dummy.init_current_stats()
+	reset_preview_player()
+	reset_dummy()
 
 	if weapon_data.type == WeaponData.Type.MELEE:
 		preview_player.position = Vector2(120, 64)
@@ -153,6 +152,21 @@ func weapon_toggle_focus_entered(weapon_data: WeaponData) -> void:
 	weapon_description._effects_scrolled.visible = false
 	not_unlocked.visible = true
 	weapon_tags.visible = false
+
+
+func reset_preview_player() -> void:
+	var weapons = preview_player.current_weapons.duplicate()
+	for weapon in weapons:
+		weapon.queue_free()
+	preview_player.current_weapons.clear()
+
+
+func reset_dummy() -> void:
+	dummy._burning = null
+	dummy._burning_timer.stop()
+	dummy._burning_particles.emitting = false
+	dummy._burning_particles.deactivate_spread()
+	dummy.init_current_stats()
 
 
 func weapon_button_pressed(weapon: WeaponData) -> void:
@@ -220,6 +234,7 @@ func _on_viewport_size_changed():
 
 
 func _on_BackButton_pressed() -> void:
+	reset()
 	emit_signal("back_button_pressed")
 
 
