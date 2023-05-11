@@ -12,8 +12,8 @@ Adds a menu to show and manage weapons
 
 ## Installation
 
-<a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2941387735">
-    <img align="right" src="https://badgen.net/https/ostaszewski29.npkn.net/py-steam-subscribers-request/2941387735?icon=https://upload.wikimedia.org/wikipedia/commons/8/83/Steam_icon_logo.svg" hspace="50"/>
+<a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2974580070">
+    <img align="right" src="https://badgen.net/https/ostaszewski29.npkn.net/py-steam-subscribers-request/2974580070?icon=https://upload.wikimedia.org/wikipedia/commons/8/83/Steam_icon_logo.svg" hspace="50"/>
 </a>
 
 - Steam Workshop: 
