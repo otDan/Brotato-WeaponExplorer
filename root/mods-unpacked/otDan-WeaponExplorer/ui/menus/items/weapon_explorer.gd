@@ -223,7 +223,7 @@ func _show_search_results(search: String):
 		var result = StringComparer._check_similarity(child.name.to_lower(), search.to_lower(), 1)
 		if search == "":
 			result = true
-		visible_weapons[visible_keys.keys()[visible_keys.SEARCH]][child.item_data] = result
+		visible_weapons[visible_keys.keys()[visible_keys.SEARCH]][child.weapon_data] = result
 	handle_weapon_visiblity()
 
 
