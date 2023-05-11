@@ -9,7 +9,9 @@
   ],
   "extra": {
     "godot": {
-      "incompatibilities": [],
+      "incompatibilities": [
+        "dami-BurnStacking"
+      ],
       "authors": ["otDan"],
       "compatible_mod_loader_version": "4.0.0",
       "compatible_game_version": ["0.6.1.6"],
