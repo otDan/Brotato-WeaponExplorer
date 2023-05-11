@@ -345,6 +345,9 @@ harvest_neg_sounds = [ ExtResource( 32 ) ]
 unique_name_in_owner = true
 script = ExtResource( 19 )
 
+[node name="StructureTimer" type="Timer" parent="VBoxContainer/HBoxContainer/VBoxContainer/PreviewContainer/MarginContainer/VBoxContainer/Control/EntitySpawner"]
+autostart = true
+
 [node name="PreviewPlayer" parent="VBoxContainer/HBoxContainer/VBoxContainer/PreviewContainer/MarginContainer/VBoxContainer/Control" instance=ExtResource( 15 )]
 unique_name_in_owner = true
 position = Vector2( 120, 64 )

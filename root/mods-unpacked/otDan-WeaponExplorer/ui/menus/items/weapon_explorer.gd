@@ -19,7 +19,7 @@ onready var weapon_tags = $"%WeaponTags"
 onready var character_container = $"%CharacterContainer"
 onready var start_run_button = $"%StartRunButton"
 
-onready var _effects_manager = $"%EffectManager"
+onready var _effects_manager = $"%EffectsManager"
 onready var _floating_text_manager = $"%FloatingTextManager"
 onready var entity_spawner: EntitySpawner = $"%EntitySpawner"
 onready var preview_player = $"%PreviewPlayer"
