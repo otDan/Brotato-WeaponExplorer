@@ -48,7 +48,12 @@ func init() -> void:
 	reset()
 
 	var first_item: Button = null
-	for weapon in ItemService.weapons:
+
+	var sorter = load("res://mods-unpacked/otDan-WeaponExplorer/global/node_sorter.gd").new()
+	var sorted_weapons = ItemService.weapons.duplicate()
+	sorted_weapons.sort_custom(sorter, "weapon_sort")
+
+	for weapon in sorted_weapons:
 		var mod = ContentLoader.lookup_modid_by_itemdata(weapon)
 		if mod == "CL_Notice-NotFound":
 			mod = "Vanilla"
