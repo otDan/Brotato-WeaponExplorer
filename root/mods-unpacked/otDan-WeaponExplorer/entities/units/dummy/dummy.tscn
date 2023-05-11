@@ -24,7 +24,6 @@ collision_mask = 132
 script = ExtResource( 3 )
 stats = ExtResource( 5 )
 outline_shader = null
-can_be_boosted = true
 
 [node name="Sprite" parent="Animation" index="0"]
 material = SubResource( 3 )

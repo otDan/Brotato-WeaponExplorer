@@ -18,6 +18,7 @@ onready var weapon_panel_ui = $"%WeaponPanelUI"
 onready var weapon_tags = $"%WeaponTags"
 onready var character_container = $"%CharacterContainer"
 onready var start_run_button = $"%StartRunButton"
+onready var entity_spawner: EntitySpawner = $"%EntitySpawner"
 onready var preview_player = $"%PreviewPlayer"
 onready var dummy = $"%Dummy"
 
@@ -155,6 +156,7 @@ func weapon_toggle_focus_entered(weapon_data: WeaponData) -> void:
 
 
 func reset_preview_player() -> void:
+	preview_player._entity_spawner_ref = entity_spawner
 	var weapons = preview_player.current_weapons.duplicate()
 	for weapon in weapons:
 		weapon.queue_free()
@@ -162,6 +164,7 @@ func reset_preview_player() -> void:
 
 
 func reset_dummy() -> void:
+	dummy._entity_spawner_ref = entity_spawner
 	dummy._burning = null
 	dummy._burning_timer.stop()
 	dummy._burning_particles.emitting = false

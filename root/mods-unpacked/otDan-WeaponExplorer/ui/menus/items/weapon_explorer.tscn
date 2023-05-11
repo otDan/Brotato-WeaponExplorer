@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://mods-unpacked/otDan-WeaponExplorer/ui/menus/items/weapon_explorer.gd" type="Script" id=1]
 [ext_resource path="res://resources/themes/base_theme.tres" type="Theme" id=2]
@@ -18,6 +18,7 @@
 [ext_resource path="res://mods-unpacked/otDan-WeaponExplorer/ui/menus/scroll_expand.gd" type="Script" id=16]
 [ext_resource path="res://resources/tiles/tiles_outline.png" type="Texture" id=17]
 [ext_resource path="res://mods-unpacked/otDan-WeaponExplorer/entities/units/dummy/dummy.tscn" type="PackedScene" id=18]
+[ext_resource path="res://global/entity_spawner.gd" type="Script" id=19]
 
 [node name="WeaponExplorer" type="MarginContainer"]
 anchor_right = 1.0
@@ -210,9 +211,9 @@ alignment = 1
 
 [node name="NotUnlocked" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
-margin_top = 52.0
+margin_top = 102.0
 margin_right = 375.0
-margin_bottom = 87.0
+margin_bottom = 137.0
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/NotUnlocked"]
 margin_left = 5.0
@@ -229,15 +230,15 @@ clip_text = true
 [node name="WeaponPanelUI" parent="VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 4 )]
 unique_name_in_owner = true
 margin_left = 0.0
-margin_top = 103.0
+margin_top = 153.0
 margin_right = 375.0
-margin_bottom = 353.0
+margin_bottom = 403.0
 
 [node name="PreviewContainer" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
 self_modulate = Color( 1, 1, 1, 0.313726 )
-margin_top = 369.0
+margin_top = 419.0
 margin_right = 375.0
-margin_bottom = 569.0
+margin_bottom = 619.0
 rect_min_size = Vector2( 0, 200 )
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/PreviewContainer"]
@@ -272,6 +273,10 @@ margin_bottom = 174.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
+[node name="EntitySpawner" type="Node2D" parent="VBoxContainer/HBoxContainer/VBoxContainer/PreviewContainer/MarginContainer/VBoxContainer/Control"]
+unique_name_in_owner = true
+script = ExtResource( 19 )
+
 [node name="PreviewPlayer" parent="VBoxContainer/HBoxContainer/VBoxContainer/PreviewContainer/MarginContainer/VBoxContainer/Control" instance=ExtResource( 15 )]
 unique_name_in_owner = true
 position = Vector2( 120, 64 )
@@ -301,10 +306,10 @@ __meta__ = {
 [node name="WeaponTags" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 self_modulate = Color( 1, 1, 1, 0.313726 )
-margin_top = 585.0
+margin_top = 635.0
 margin_right = 375.0
-margin_bottom = 915.0
-rect_min_size = Vector2( 0, 330 )
+margin_bottom = 865.0
+rect_min_size = Vector2( 0, 230 )
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.0
 
@@ -312,7 +317,7 @@ size_flags_stretch_ratio = 0.0
 margin_left = 5.0
 margin_top = 5.0
 margin_right = 370.0
-margin_bottom = 325.0
+margin_bottom = 225.0
 size_flags_horizontal = 3
 size_flags_vertical = 11
 custom_constants/margin_right = 8
@@ -324,7 +329,7 @@ custom_constants/margin_bottom = 8
 margin_left = 8.0
 margin_top = 8.0
 margin_right = 357.0
-margin_bottom = 312.0
+margin_bottom = 212.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 8
@@ -341,7 +346,7 @@ clip_text = true
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/WeaponTags/MarginContainer/VBoxContainer"]
 margin_top = 39.0
 margin_right = 349.0
-margin_bottom = 245.0
+margin_bottom = 145.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
@@ -353,31 +358,57 @@ script = ExtResource( 16 )
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/WeaponTags/MarginContainer/VBoxContainer/ScrollContainer"]
 margin_left = 8.0
 margin_top = 8.0
-margin_right = 341.0
-margin_bottom = 198.0
+margin_right = 321.0
+margin_bottom = 212.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_constants/margin_right = 20
+custom_constants/margin_right = 0
 custom_constants/margin_top = 8
 custom_constants/margin_bottom = 8
 
 [node name="CharacterContainer" type="GridContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/WeaponTags/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer"]
 unique_name_in_owner = true
-margin_left = 156.0
+margin_left = 13.0
 margin_top = 8.0
-margin_right = 156.0
-margin_bottom = 8.0
+margin_right = 299.0
+margin_bottom = 196.0
 size_flags_horizontal = 6
 size_flags_vertical = 0
 custom_constants/vseparation = 8
 custom_constants/hseparation = 8
 columns = 3
 
+[node name="CharacterToggle" parent="VBoxContainer/HBoxContainer/VBoxContainer/WeaponTags/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/CharacterContainer" instance=ExtResource( 14 )]
+
+[node name="CharacterToggle2" parent="VBoxContainer/HBoxContainer/VBoxContainer/WeaponTags/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/CharacterContainer" instance=ExtResource( 14 )]
+margin_left = 98.0
+margin_right = 188.0
+
+[node name="CharacterToggle3" parent="VBoxContainer/HBoxContainer/VBoxContainer/WeaponTags/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/CharacterContainer" instance=ExtResource( 14 )]
+margin_left = 196.0
+margin_right = 286.0
+
+[node name="CharacterToggle4" parent="VBoxContainer/HBoxContainer/VBoxContainer/WeaponTags/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/CharacterContainer" instance=ExtResource( 14 )]
+margin_top = 98.0
+margin_bottom = 188.0
+
+[node name="CharacterToggle5" parent="VBoxContainer/HBoxContainer/VBoxContainer/WeaponTags/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/CharacterContainer" instance=ExtResource( 14 )]
+margin_left = 98.0
+margin_top = 98.0
+margin_right = 188.0
+margin_bottom = 188.0
+
+[node name="CharacterToggle6" parent="VBoxContainer/HBoxContainer/VBoxContainer/WeaponTags/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/CharacterContainer" instance=ExtResource( 14 )]
+margin_left = 196.0
+margin_top = 98.0
+margin_right = 286.0
+margin_bottom = 188.0
+
 [node name="StartRunButton" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer/WeaponTags/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
-margin_top = 253.0
+margin_top = 153.0
 margin_right = 349.0
-margin_bottom = 304.0
+margin_bottom = 204.0
 custom_fonts/font = ExtResource( 6 )
 disabled = true
 text = "MENU_START_RUN"

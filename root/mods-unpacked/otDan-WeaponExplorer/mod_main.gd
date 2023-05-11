@@ -32,7 +32,7 @@ func _install_translations()->void:
 func _install_script_extensions():
 #	for extension in get_gd_file_paths(extensions_dir):
 #		mod_loader.install_script_extension(extension)
-	mod_loader.install_script_extension(extensions_dir + "projectiles/player_projectile.gd")
+	mod_loader.install_script_extension(extensions_dir + "singletons/weapon_service.gd")
 	mod_loader.install_script_extension(extensions_dir + "ui/menus/title_screen/title_screen_menus.gd")
 	mod_loader.install_script_extension(extensions_dir + "ui/menus/pages/menu_choose_options.gd")
 	mod_loader.install_script_extension(extensions_dir + "ui/menus/run/character_selection.gd")
