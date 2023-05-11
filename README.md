@@ -1,13 +1,13 @@
-<img align="right" src="https://github.com/otDan/Brotato-ItemExplorer/blob/master/.publish/icon-full.png?raw=true" height="160" hspace="20"/>
+<img align="right" src="https://github.com/otDan/Brotato-WeaponExplorer/blob/master/.publish/icon-full.png?raw=true" height="160" hspace="20"/>
 
-# ItemExplorer for [Brotato](https://store.steampowered.com/app/1942280/Brotato/)
+# WeaponExplorer for [Brotato](https://store.steampowered.com/app/1942280/Brotato/)
 
-Adds a menu to show and manage items
+Adds a menu to show and manage weapons
 - Built for the [GodotModLoader](https://github.com/GodotModding/godot-mod-loader)
 
 ## Showcase
 <p align="center"> 
-    <img src="https://github.com/otDan/Brotato-ItemExplorer/blob/master/.publish/showcase.png?raw=true" height="350" style="object-fit:scale-down;"/>
+    <img src="https://github.com/otDan/Brotato-WeaponExplorer/blob/master/.publish/showcase.png?raw=true" height="350" style="object-fit:scale-down;"/>
 </p>
 
 ## Installation
@@ -19,19 +19,19 @@ Adds a menu to show and manage items
 - Steam Workshop: 
   - https://steamcommunity.com/sharedfiles/filedetails/?id=2941387735
 
-<a href="https://thunderstore.io/c/brotato/p/otDan/ItemExplorer/">
-    <img align="right" src="https://badgen.net/https/git-hub-badge-data.npkn.net/thunderstore-downloads-request/brotato/ItemExplorer?icon=https://gcdn.thunderstore.io/static/ts/thunderstore-logomark-black.svg" hspace="50"/>
+<a href="https://thunderstore.io/c/brotato/p/otDan/WeaponExplorer/">
+    <img align="right" src="https://badgen.net/https/git-hub-badge-data.npkn.net/thunderstore-downloads-request/brotato/WeaponExplorer?icon=https://gcdn.thunderstore.io/static/ts/thunderstore-logomark-black.svg" hspace="50"/>
 </a>
 
 - Thunderstore: 
-  - https://thunderstore.io/c/brotato/p/otDan/ItemExplorer/
+  - https://thunderstore.io/c/brotato/p/otDan/WeaponExplorer/
 
-<a href="https://github.com/otDan/Brotato-ItemExplorer/releases">
-    <img align="right" src="https://badgen.net/github/assets-dl/otDan/Brotato-ItemExplorer?icon=git&color=blue" hspace="50"/>
+<a href="https://github.com/otDan/Brotato-WeaponExplorer/releases">
+    <img align="right" src="https://badgen.net/github/assets-dl/otDan/Brotato-WeaponExplorer?icon=git&color=blue" hspace="50"/>
 </a> 
 
 - Manual: 
-  - https://github.com/otDan/Brotato-ItemExplorer/releases
+  - https://github.com/otDan/Brotato-WeaponExplorer/releases
 
 <p align="left"> 
     <a href="https://www.paypal.com/paypalme/otdan">
