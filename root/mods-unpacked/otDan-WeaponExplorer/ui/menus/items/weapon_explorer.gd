@@ -132,9 +132,6 @@ func weapon_toggle_focus_entered(weapon_data: WeaponData) -> void:
 		preview_player.position = Vector2(60, 64)
 		dummy.position = Vector2(280, 64)
 
-
-	preview_player.add_weapon(weapon_data, 1)
-
 	if ProgressData.weapons_unlocked.has(weapon_data.weapon_id):
 		not_unlocked.visible = false
 		weapon_tags.visible = true
@@ -151,12 +148,15 @@ func weapon_toggle_focus_entered(weapon_data: WeaponData) -> void:
 				has_character = true
 
 		weapon_tags.visible = has_character
+		preview_player.add_weapon(weapon_data, 1)
 		return
 
 	var weapon_description: ItemDescription = weapon_panel_ui._item_description
 	weapon_description._name.text = "???"
 	weapon_description._effects.visible = false
 	weapon_description._effects_scrolled.visible = false
+	weapon_description._weapon_stats.visible = false
+	weapon_description._weapon_stats_scrolled.visible = false
 	not_unlocked.visible = true
 	weapon_tags.visible = false
 

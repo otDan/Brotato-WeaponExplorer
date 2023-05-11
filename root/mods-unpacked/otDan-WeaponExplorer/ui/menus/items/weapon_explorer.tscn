@@ -250,6 +250,36 @@ margin_top = 153.0
 margin_right = 375.0
 margin_bottom = 403.0
 
+[node name="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/WeaponPanelUI" index="0"]
+margin_right = 370.0
+margin_bottom = 245.0
+
+[node name="VBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/WeaponPanelUI/MarginContainer" index="0"]
+margin_right = 351.0
+margin_bottom = 226.0
+
+[node name="ItemDescription" parent="VBoxContainer/HBoxContainer/VBoxContainer/WeaponPanelUI/MarginContainer/VBoxContainer" index="0"]
+margin_right = 337.0
+expand_indefinitely = false
+
+[node name="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/WeaponPanelUI/MarginContainer/VBoxContainer/ItemDescription" index="0"]
+margin_right = 337.0
+
+[node name="ScrollContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/WeaponPanelUI/MarginContainer/VBoxContainer/ItemDescription/HBoxContainer" index="1"]
+margin_right = 337.0
+
+[node name="VBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/WeaponPanelUI/MarginContainer/VBoxContainer/ItemDescription/HBoxContainer/ScrollContainer" index="0"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 218.0
+margin_bottom = 67.0
+
+[node name="VBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/WeaponPanelUI/MarginContainer/VBoxContainer/ItemDescription/ScrollContainer" index="0"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 313.0
+margin_bottom = 8.0
+
 [node name="PreviewContainer" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
 self_modulate = Color( 1, 1, 1, 0.313726 )
 margin_top = 419.0
@@ -476,3 +506,6 @@ script = ExtResource( 12 )
 [connection signal="text_changed" from="VBoxContainer/HBoxContainer/VBoxContainer2/SearchContainer/MarginContainer/Search" to="." method="_on_Search_text_changed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer/WeaponTags/MarginContainer/VBoxContainer/StartRunButton" to="." method="_on_StartRunButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/Buttons/BackButton" to="." method="_on_BackButton_pressed"]
+
+[editable path="VBoxContainer/HBoxContainer/VBoxContainer/WeaponPanelUI"]
+[editable path="VBoxContainer/HBoxContainer/VBoxContainer/WeaponPanelUI/MarginContainer/VBoxContainer/ItemDescription"]
