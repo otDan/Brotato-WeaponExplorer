@@ -18,6 +18,9 @@ onready var weapon_panel_ui = $"%WeaponPanelUI"
 onready var weapon_tags = $"%WeaponTags"
 onready var character_container = $"%CharacterContainer"
 onready var start_run_button = $"%StartRunButton"
+
+onready var _effects_manager = $"%EffectManager"
+onready var _floating_text_manager = $"%FloatingTextManager"
 onready var entity_spawner: EntitySpawner = $"%EntitySpawner"
 onready var preview_player = $"%PreviewPlayer"
 onready var dummy = $"%Dummy"
@@ -35,6 +38,9 @@ enum visible_keys {
 
 func _ready():
 	var _size_changed = get_tree().root.connect("size_changed", self, "_on_viewport_size_changed")
+
+	connect_visual_effects(preview_player)
+	connect_visual_effects(dummy)
 
 
 func init() -> void:
@@ -234,6 +240,11 @@ func handle_weapon_visiblity():
 func _on_viewport_size_changed():
 	var weapons = int(round(get_viewport().get_visible_rect().size.x * 0.5 / 90))
 	weapon_container.columns = weapons
+
+
+func connect_visual_effects(unit:Unit) -> void:
+	var _error_effects = unit.connect("took_damage", _effects_manager, "_on_unit_took_damage")
+	var _error_floating_text = unit.connect("took_damage", _floating_text_manager, "_on_unit_took_damage")
 
 
 func _on_BackButton_pressed() -> void:

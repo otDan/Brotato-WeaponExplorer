@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://mods-unpacked/otDan-WeaponExplorer/ui/menus/items/weapon_explorer.gd" type="Script" id=1]
 [ext_resource path="res://resources/themes/base_theme.tres" type="Theme" id=2]
@@ -19,6 +19,22 @@
 [ext_resource path="res://resources/tiles/tiles_outline.png" type="Texture" id=17]
 [ext_resource path="res://mods-unpacked/otDan-WeaponExplorer/entities/units/dummy/dummy.tscn" type="PackedScene" id=18]
 [ext_resource path="res://global/entity_spawner.gd" type="Script" id=19]
+[ext_resource path="res://global/effects_manager.gd" type="Script" id=20]
+[ext_resource path="res://particles/heal_particles.tscn" type="PackedScene" id=21]
+[ext_resource path="res://visual_effects/hit_effect/hit_effect.tscn" type="PackedScene" id=22]
+[ext_resource path="res://particles/pickup_gold_particles.tscn" type="PackedScene" id=23]
+[ext_resource path="res://particles/speed_removed_particles.tscn" type="PackedScene" id=24]
+[ext_resource path="res://particles/stats_boost_particles.tscn" type="PackedScene" id=25]
+[ext_resource path="res://particles/directional_hit_particles.tscn" type="PackedScene" id=26]
+[ext_resource path="res://particles/hit_particles.tscn" type="PackedScene" id=27]
+[ext_resource path="res://weapons/melee/dagger/dagger_icon.png" type="Texture" id=28]
+[ext_resource path="res://items/materials/harvesting_icon.png" type="Texture" id=29]
+[ext_resource path="res://resources/sounds/harvest/cartoon_boing_jump_07.wav" type="AudioStream" id=30]
+[ext_resource path="res://resources/sounds/harvest/cartoon_boing_jump_01.wav" type="AudioStream" id=31]
+[ext_resource path="res://resources/sounds/harvest/cartoon_boing_jump_06.wav" type="AudioStream" id=32]
+[ext_resource path="res://resources/sounds/harvest/cartoon_boing_jump_09.wav" type="AudioStream" id=33]
+[ext_resource path="res://visual_effects/floating_text/floating_text_manager.gd" type="Script" id=34]
+[ext_resource path="res://visual_effects/floating_text/floating_text.tscn" type="PackedScene" id=35]
 
 [node name="WeaponExplorer" type="MarginContainer"]
 anchor_right = 1.0
@@ -272,6 +288,28 @@ margin_right = 349.0
 margin_bottom = 174.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="EffectsManager" type="Node2D" parent="VBoxContainer/HBoxContainer/VBoxContainer/PreviewContainer/MarginContainer/VBoxContainer/Control"]
+unique_name_in_owner = true
+script = ExtResource( 20 )
+heal_particles = ExtResource( 21 )
+stats_boost_particles = ExtResource( 25 )
+speed_removed_particles = ExtResource( 24 )
+hit_particles = ExtResource( 27 )
+directional_hit_particles = ExtResource( 26 )
+hit_effect = ExtResource( 22 )
+gold_pickup_particles = ExtResource( 23 )
+
+[node name="FloatingTextManager" type="Node2D" parent="VBoxContainer/HBoxContainer/VBoxContainer/PreviewContainer/MarginContainer/VBoxContainer/Control"]
+unique_name_in_owner = true
+script = ExtResource( 34 )
+_floating_text = ExtResource( 35 )
+gold_on_crit_kill_icon = ExtResource( 28 )
+harvesting_icon = ExtResource( 29 )
+stat_pos_sounds = [ ExtResource( 33 ) ]
+stat_neg_sounds = [ ExtResource( 30 ) ]
+harvest_pos_sounds = [ ExtResource( 31 ) ]
+harvest_neg_sounds = [ ExtResource( 32 ) ]
 
 [node name="EntitySpawner" type="Node2D" parent="VBoxContainer/HBoxContainer/VBoxContainer/PreviewContainer/MarginContainer/VBoxContainer/Control"]
 unique_name_in_owner = true
