@@ -1,0 +1,24 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://entities/units/unit/stats.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+health = 99999
+health_increase_each_wave = 1.0
+speed = 300
+speed_randomization = 0
+damage = 1
+damage_increase_each_wave = 1.0
+attack_cd = 30.0
+value = 1
+knockback_resistance = 0.0
+gold_spread = 0
+can_drop_consumables = true
+always_drop_consumables = false
+base_drop_chance = 0.01
+item_drop_chance = 0.01
+min_consumable_tier = 0
+max_consumable_tier = 0
+armor = 0
+armor_increase_each_wave = 0.0

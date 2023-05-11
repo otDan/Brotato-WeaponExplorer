@@ -1,0 +1,409 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://mods-unpacked/otDan-WeaponExplorer/ui/menus/items/weapon_explorer.gd" type="Script" id=1]
+[ext_resource path="res://resources/themes/base_theme.tres" type="Theme" id=2]
+[ext_resource path="res://mods-unpacked/otDan-WeaponExplorer/ui/menus/items/search.gd" type="Script" id=3]
+[ext_resource path="res://ui/menus/ingame/item_panel_ui.tscn" type="PackedScene" id=4]
+[ext_resource path="res://resources/fonts/actual/base/font_smallest_text.tres" type="DynamicFont" id=5]
+[ext_resource path="res://resources/fonts/actual/base/font_small_button.tres" type="DynamicFont" id=6]
+[ext_resource path="res://mods-unpacked/otDan-WeaponExplorer/ui/menus/items/parts/weapon_toggle.tscn" type="PackedScene" id=7]
+[ext_resource path="res://mods-unpacked/otDan-ItemExplorer/resources/themes/itemexplorer-mod_menu_theme.theme" type="Theme" id=8]
+[ext_resource path="res://items/global/info.png" type="Texture" id=9]
+[ext_resource path="res://mods-unpacked/otDan-BetterModList/resources/themes/bettermodlist-mod_menu_theme.theme" type="Theme" id=10]
+[ext_resource path="res://mods-unpacked/otDan-WeaponExplorer/ui/menus/items/parts/mod_toggle.tscn" type="PackedScene" id=11]
+[ext_resource path="res://ui/menus/global/my_menu_button.gd" type="Script" id=12]
+[ext_resource path="res://mods-unpacked/otDan-ItemExplorer/resources/fonts/actual/base/itemexplorer-font-small.tres" type="DynamicFont" id=13]
+[ext_resource path="res://mods-unpacked/otDan-WeaponExplorer/ui/menus/items/parts/character_toggle.tscn" type="PackedScene" id=14]
+[ext_resource path="res://entities/units/player/player.tscn" type="PackedScene" id=15]
+[ext_resource path="res://mods-unpacked/otDan-WeaponExplorer/ui/menus/scroll_expand.gd" type="Script" id=16]
+[ext_resource path="res://resources/tiles/tiles_outline.png" type="Texture" id=17]
+[ext_resource path="res://mods-unpacked/otDan-WeaponExplorer/entities/units/dummy/dummy.tscn" type="PackedScene" id=18]
+
+[node name="WeaponExplorer" type="MarginContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 2 )
+custom_constants/margin_right = 16
+custom_constants/margin_top = 16
+custom_constants/margin_left = 16
+custom_constants/margin_bottom = 16
+script = ExtResource( 1 )
+mod_toggle = ExtResource( 11 )
+weapon_toggle = ExtResource( 7 )
+character_toggle = ExtResource( 14 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 1904.0
+margin_bottom = 1064.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 8 )
+custom_constants/separation = 16
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_right = 1888.0
+margin_bottom = 967.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 16
+alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+margin_right = 309.0
+margin_bottom = 967.0
+custom_constants/separation = 16
+
+[node name="SearchContainer" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
+self_modulate = Color( 1, 1, 1, 0.313726 )
+margin_right = 309.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 260, 0 )
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer2/SearchContainer"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 304.0
+margin_bottom = 65.0
+custom_constants/margin_right = 8
+custom_constants/margin_top = 8
+custom_constants/margin_left = 8
+custom_constants/margin_bottom = 8
+
+[node name="Search" type="LineEdit" parent="VBoxContainer/HBoxContainer/VBoxContainer2/SearchContainer/MarginContainer"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 291.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 13 )
+align = 1
+clear_button_enabled = true
+placeholder_text = "Search"
+placeholder_alpha = 0.35
+script = ExtResource( 3 )
+
+[node name="ModPanelContainer" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer2"]
+self_modulate = Color( 1, 1, 1, 0.313726 )
+margin_top = 86.0
+margin_right = 309.0
+margin_bottom = 967.0
+rect_min_size = Vector2( 260, 0 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer2/ModPanelContainer"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 304.0
+margin_bottom = 876.0
+custom_constants/margin_right = 8
+custom_constants/margin_top = 8
+custom_constants/margin_left = 8
+custom_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer2/ModPanelContainer/MarginContainer"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 291.0
+margin_bottom = 863.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer2/ModPanelContainer/MarginContainer/VBoxContainer"]
+margin_right = 283.0
+margin_bottom = 45.0
+hint_tooltip = "Show only the items  of the specific mods. (This does not disable the items)"
+theme = ExtResource( 10 )
+custom_constants/separation = 8
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer2/ModPanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_right = 245.0
+margin_bottom = 45.0
+text = "MENU_MODS"
+align = 1
+valign = 1
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer/VBoxContainer2/ModPanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 253.0
+margin_right = 283.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 30, 25 )
+texture = ExtResource( 9 )
+expand = true
+stretch_mode = 6
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer2/ModPanelContainer/MarginContainer/VBoxContainer"]
+margin_top = 49.0
+margin_right = 283.0
+margin_bottom = 855.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+follow_focus = true
+scroll_horizontal_enabled = false
+script = ExtResource( 16 )
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer2/ModPanelContainer/MarginContainer/VBoxContainer/ScrollContainer"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 275.0
+margin_bottom = 798.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 20
+
+[node name="ModContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer2/ModPanelContainer/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer"]
+unique_name_in_owner = true
+margin_right = 247.0
+margin_bottom = 790.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/HBoxContainer"]
+self_modulate = Color( 1, 1, 1, 0.313726 )
+margin_left = 325.0
+margin_right = 1497.0
+margin_bottom = 967.0
+rect_clip_content = true
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="WeaponScrollContainer" type="ScrollContainer" parent="VBoxContainer/HBoxContainer/PanelContainer"]
+unique_name_in_owner = true
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 1167.0
+margin_bottom = 962.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+follow_focus = true
+scroll_horizontal_enabled = false
+script = ExtResource( 16 )
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/PanelContainer/WeaponScrollContainer"]
+margin_left = 571.0
+margin_top = 8.0
+margin_right = 591.0
+margin_bottom = 949.0
+size_flags_horizontal = 6
+size_flags_vertical = 3
+custom_constants/margin_right = 20
+
+[node name="WeaponContainer" type="GridContainer" parent="VBoxContainer/HBoxContainer/PanelContainer/WeaponScrollContainer/MarginContainer"]
+unique_name_in_owner = true
+margin_bottom = 941.0
+size_flags_horizontal = 2
+size_flags_vertical = 3
+custom_constants/vseparation = 8
+custom_constants/hseparation = 8
+columns = 11
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+margin_left = 1513.0
+margin_right = 1888.0
+margin_bottom = 967.0
+custom_constants/separation = 16
+alignment = 1
+
+[node name="NotUnlocked" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+margin_top = 52.0
+margin_right = 375.0
+margin_bottom = 87.0
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/NotUnlocked"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 370.0
+margin_bottom = 30.0
+custom_colors/font_color = Color( 0.870588, 0.243137, 0.243137, 1 )
+custom_fonts/font = ExtResource( 5 )
+text = "MENU_ITEM_NOT_UNLOCKED"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="WeaponPanelUI" parent="VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource( 4 )]
+unique_name_in_owner = true
+margin_left = 0.0
+margin_top = 103.0
+margin_right = 375.0
+margin_bottom = 353.0
+
+[node name="PreviewContainer" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+self_modulate = Color( 1, 1, 1, 0.313726 )
+margin_top = 369.0
+margin_right = 375.0
+margin_bottom = 569.0
+rect_min_size = Vector2( 0, 200 )
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/PreviewContainer"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 370.0
+margin_bottom = 195.0
+custom_constants/margin_right = 8
+custom_constants/margin_top = 8
+custom_constants/margin_left = 8
+custom_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/PreviewContainer/MarginContainer"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 357.0
+margin_bottom = 182.0
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/PreviewContainer/MarginContainer/VBoxContainer"]
+margin_right = 349.0
+margin_bottom = 31.0
+custom_fonts/font = ExtResource( 6 )
+text = "MENU_WEAPON_PREVIEW"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="Control" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/PreviewContainer/MarginContainer/VBoxContainer"]
+margin_top = 35.0
+margin_right = 349.0
+margin_bottom = 174.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PreviewPlayer" parent="VBoxContainer/HBoxContainer/VBoxContainer/PreviewContainer/MarginContainer/VBoxContainer/Control" instance=ExtResource( 15 )]
+unique_name_in_owner = true
+position = Vector2( 120, 64 )
+
+[node name="Dummy" parent="VBoxContainer/HBoxContainer/VBoxContainer/PreviewContainer/MarginContainer/VBoxContainer/Control" instance=ExtResource( 18 )]
+unique_name_in_owner = true
+position = Vector2( 240, 64 )
+
+[node name="Outline" type="NinePatchRect" parent="VBoxContainer/HBoxContainer/VBoxContainer/PreviewContainer/MarginContainer/VBoxContainer/Control"]
+modulate = Color( 0.470588, 0.403922, 0.345098, 1 )
+show_behind_parent = true
+margin_right = 349.0
+margin_bottom = 139.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 17 )
+patch_margin_left = 64
+patch_margin_top = 64
+patch_margin_right = 64
+patch_margin_bottom = 64
+axis_stretch_horizontal = 1
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="WeaponTags" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+self_modulate = Color( 1, 1, 1, 0.313726 )
+margin_top = 585.0
+margin_right = 375.0
+margin_bottom = 915.0
+rect_min_size = Vector2( 0, 330 )
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.0
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/WeaponTags"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 370.0
+margin_bottom = 325.0
+size_flags_horizontal = 3
+size_flags_vertical = 11
+custom_constants/margin_right = 8
+custom_constants/margin_top = 8
+custom_constants/margin_left = 8
+custom_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/WeaponTags/MarginContainer"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 357.0
+margin_bottom = 312.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 8
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer/WeaponTags/MarginContainer/VBoxContainer"]
+margin_right = 349.0
+margin_bottom = 31.0
+custom_fonts/font = ExtResource( 6 )
+text = "MENU_WEAPON_TAGGED_CHARACTERS"
+align = 1
+valign = 1
+clip_text = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/WeaponTags/MarginContainer/VBoxContainer"]
+margin_top = 39.0
+margin_right = 349.0
+margin_bottom = 245.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+follow_focus = true
+scroll_horizontal_enabled = false
+script = ExtResource( 16 )
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/WeaponTags/MarginContainer/VBoxContainer/ScrollContainer"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 341.0
+margin_bottom = 198.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 20
+custom_constants/margin_top = 8
+custom_constants/margin_bottom = 8
+
+[node name="CharacterContainer" type="GridContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer/WeaponTags/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer"]
+unique_name_in_owner = true
+margin_left = 156.0
+margin_top = 8.0
+margin_right = 156.0
+margin_bottom = 8.0
+size_flags_horizontal = 6
+size_flags_vertical = 0
+custom_constants/vseparation = 8
+custom_constants/hseparation = 8
+columns = 3
+
+[node name="StartRunButton" type="Button" parent="VBoxContainer/HBoxContainer/VBoxContainer/WeaponTags/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+margin_top = 253.0
+margin_right = 349.0
+margin_bottom = 304.0
+custom_fonts/font = ExtResource( 6 )
+disabled = true
+text = "MENU_START_RUN"
+script = ExtResource( 12 )
+
+[node name="Buttons" type="VBoxContainer" parent="VBoxContainer"]
+margin_left = 644.0
+margin_top = 983.0
+margin_right = 1244.0
+margin_bottom = 1048.0
+rect_min_size = Vector2( 600, 0 )
+size_flags_horizontal = 4
+custom_constants/separation = 15
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackButton" type="Button" parent="VBoxContainer/Buttons"]
+margin_right = 600.0
+margin_bottom = 65.0
+text = "MENU_BACK"
+script = ExtResource( 12 )
+
+[connection signal="focus_entered" from="VBoxContainer/HBoxContainer/VBoxContainer2/SearchContainer/MarginContainer/Search" to="VBoxContainer/HBoxContainer/VBoxContainer2/SearchContainer/MarginContainer/Search" method="_on_Search_focus_entered"]
+[connection signal="focus_exited" from="VBoxContainer/HBoxContainer/VBoxContainer2/SearchContainer/MarginContainer/Search" to="VBoxContainer/HBoxContainer/VBoxContainer2/SearchContainer/MarginContainer/Search" method="_on_Search_focus_exited"]
+[connection signal="text_changed" from="VBoxContainer/HBoxContainer/VBoxContainer2/SearchContainer/MarginContainer/Search" to="." method="_on_Search_text_changed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/VBoxContainer/WeaponTags/MarginContainer/VBoxContainer/StartRunButton" to="." method="_on_StartRunButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/Buttons/BackButton" to="." method="_on_BackButton_pressed"]
