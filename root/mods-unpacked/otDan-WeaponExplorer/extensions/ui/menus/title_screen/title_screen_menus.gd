@@ -13,6 +13,11 @@ func _ready():
 	weapon_menu_choose_options.connect("weapon_explorer_button_pressed", self, "weapon_explorer_button_pressed")
 
 
+func back() -> void:
+	.back()
+	_menu_weapon_explorer.reset()
+
+
 func weapon_explorer_button_pressed() -> void:
 	switch(weapon_menu_choose_options, _menu_weapon_explorer)
 
