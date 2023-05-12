@@ -111,6 +111,8 @@ func reset() -> void:
 	for child in character_container.get_children():
 		character_container.remove_child(child)
 
+	mod_weapons.clear()
+
 	reset_preview_player()
 	reset_dummy()
 
