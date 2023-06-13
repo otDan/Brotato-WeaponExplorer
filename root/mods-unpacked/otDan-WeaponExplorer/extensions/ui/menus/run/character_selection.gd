@@ -1,6 +1,5 @@
 extends "res://ui/menus/run/character_selection.gd"
 
-
 onready var WeaponExplorer = get_node("/root/ModLoader/otDan-WeaponExplorer/WeaponExplorer")
 
 

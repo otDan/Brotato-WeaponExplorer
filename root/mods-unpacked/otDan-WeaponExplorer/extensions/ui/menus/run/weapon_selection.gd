@@ -1,5 +1,7 @@
 extends "res://ui/menus/run/weapon_selection.gd"
 
+onready var WeaponExplorer = get_node("/root/ModLoader/otDan-WeaponExplorer/WeaponExplorer")
+
 
 func _ready():
 	var selected_weapon = WeaponExplorer.selected_weapon
