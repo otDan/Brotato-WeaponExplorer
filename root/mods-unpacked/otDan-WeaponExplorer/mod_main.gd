@@ -21,6 +21,10 @@ func _init(_mod_loader):
 
 func _ready():
 	ModLoaderLog.success("Loaded", MOD_NAME)
+	
+
+func _disable():
+	pass
 
 
 func _install_translations()->void:

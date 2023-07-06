@@ -1,49 +1,13 @@
-[gd_scene load_steps=58 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://global/entity_spawner.gd" type="Script" id=1]
 [ext_resource path="res://weapons/melee/dagger/dagger_icon.png" type="Texture" id=2]
-[ext_resource path="res://mods-unpacked/otDan-WeaponExplorer/entities/units/dummy/dummy.gd" type="Script" id=3]
 [ext_resource path="res://global/effects_manager.gd" type="Script" id=4]
-[ext_resource path="res://entities/units/player/player.gd" type="Script" id=5]
 [ext_resource path="res://visual_effects/floating_text/floating_text_manager.gd" type="Script" id=6]
-[ext_resource path="res://entities/units/unit/hurt_sounds/punch_general_body_impact_04.wav" type="AudioStream" id=7]
-[ext_resource path="res://entities/units/unit/hurt_sounds/punch_general_body_impact_07.wav" type="AudioStream" id=8]
-[ext_resource path="res://entities/units/unit/crit_sounds/bullet_impact_metal_light_03.wav" type="AudioStream" id=9]
-[ext_resource path="res://entities/units/unit/crit_sounds/bullet_impact_metal_light_01.wav" type="AudioStream" id=10]
-[ext_resource path="res://entities/units/unit/hurt_sounds/punch_general_body_impact_06.wav" type="AudioStream" id=11]
-[ext_resource path="res://entities/units/unit/dodge_sounds/whoosh_swish_small_harsh_02.wav" type="AudioStream" id=12]
-[ext_resource path="res://resources/sounds/burn/fireball_impact_burn_01.wav" type="AudioStream" id=13]
-[ext_resource path="res://entities/units/unit/hurt_sounds/punch_general_body_impact_05.wav" type="AudioStream" id=14]
-[ext_resource path="res://entities/units/unit/crit_sounds/bullet_impact_metal_light_02.wav" type="AudioStream" id=15]
-[ext_resource path="res://entities/units/unit/crit_sounds/bullet_impact_metal_light_05.wav" type="AudioStream" id=16]
-[ext_resource path="res://entities/units/unit/hurt_sounds/punch_general_body_impact_08.wav" type="AudioStream" id=17]
-[ext_resource path="res://resources/sounds/burn/fireball_impact_burn_02.wav" type="AudioStream" id=18]
-[ext_resource path="res://entities/units/unit/hurt_sounds/punch_general_body_impact_03.wav" type="AudioStream" id=19]
-[ext_resource path="res://entities/units/unit/hurt_sounds/punch_general_body_impact_02.wav" type="AudioStream" id=20]
-[ext_resource path="res://resources/sounds/burn/fireball_impact_burn_03.wav" type="AudioStream" id=21]
-[ext_resource path="res://entities/units/unit/dodge_sounds/whoosh_swish_small_harsh_03.wav" type="AudioStream" id=22]
-[ext_resource path="res://entities/units/unit/hurt_sounds/punch_general_body_impact_01.wav" type="AudioStream" id=23]
-[ext_resource path="res://resources/sounds/burn/fireball_impact_burn_04.wav" type="AudioStream" id=24]
 [ext_resource path="res://items/materials/harvesting_icon.png" type="Texture" id=25]
-[ext_resource path="res://entities/units/player/player_stats.tres" type="Resource" id=26]
-[ext_resource path="res://mods-unpacked/otDan-WeaponExplorer/entities/units/dummy/dummy_stats.tres" type="Resource" id=27]
 [ext_resource path="res://resources/fonts/actual/base/font_small_button.tres" type="DynamicFont" id=28]
-[ext_resource path="res://entities/units/unit/hurt_sounds/bullet_impact_body_flesh_07.wav" type="AudioStream" id=29]
 [ext_resource path="res://resources/sounds/harvest/cartoon_boing_jump_07.wav" type="AudioStream" id=30]
-[ext_resource path="res://entities/units/player/step_sounds/Step 1.mp3" type="AudioStream" id=31]
-[ext_resource path="res://entities/units/player/step_sounds/Step 4.mp3" type="AudioStream" id=32]
-[ext_resource path="res://entities/units/player/hp_regen_sounds/Potion_Grab_01.ogg" type="AudioStream" id=33]
-[ext_resource path="res://items/all/alien_eyes/bullet_impact_water_01.wav" type="AudioStream" id=34]
-[ext_resource path="res://entities/units/unit/hurt_sounds/bullet_impact_body_flesh_06.wav" type="AudioStream" id=35]
-[ext_resource path="res://items/all/alien_eyes/bullet_impact_water_02.wav" type="AudioStream" id=36]
 [ext_resource path="res://resources/tiles/tiles_outline.png" type="Texture" id=37]
-[ext_resource path="res://entities/units/player/step_sounds/Step 3.mp3" type="AudioStream" id=38]
-[ext_resource path="res://entities/units/player/step_sounds/Step 2.mp3" type="AudioStream" id=39]
-[ext_resource path="res://entities/units/player/step_sounds/Step 6.mp3" type="AudioStream" id=40]
-[ext_resource path="res://entities/units/unit/hurt_sounds/bullet_impact_body_flesh_05.wav" type="AudioStream" id=41]
-[ext_resource path="res://entities/units/player/hp_regen_sounds/Potion_Grab_02.ogg" type="AudioStream" id=42]
-[ext_resource path="res://entities/units/player/step_sounds/Step 5.mp3" type="AudioStream" id=43]
-[ext_resource path="res://entities/units/unit/hurt_sounds/bullet_impact_body_flesh_08.wav" type="AudioStream" id=44]
 [ext_resource path="res://resources/sounds/harvest/cartoon_boing_jump_01.wav" type="AudioStream" id=45]
 [ext_resource path="res://resources/sounds/harvest/cartoon_boing_jump_06.wav" type="AudioStream" id=46]
 [ext_resource path="res://resources/sounds/harvest/cartoon_boing_jump_09.wav" type="AudioStream" id=47]
@@ -66,10 +30,10 @@ margin_bottom = 619.0
 rect_min_size = Vector2( 0, 200 )
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-margin_left = 5.0
-margin_top = 5.0
-margin_right = 370.0
-margin_bottom = 195.0
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 368.0
+margin_bottom = 193.0
 custom_constants/margin_right = 8
 custom_constants/margin_top = 8
 custom_constants/margin_left = 8
@@ -78,11 +42,11 @@ custom_constants/margin_bottom = 8
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 margin_left = 8.0
 margin_top = 8.0
-margin_right = 357.0
-margin_bottom = 182.0
+margin_right = 353.0
+margin_bottom = 178.0
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
-margin_right = 349.0
+margin_right = 345.0
 margin_bottom = 31.0
 custom_fonts/font = ExtResource( 28 )
 text = "MENU_WEAPON_PREVIEW"
@@ -92,8 +56,8 @@ clip_text = true
 
 [node name="Control" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
 margin_top = 35.0
-margin_right = 349.0
-margin_bottom = 174.0
+margin_right = 345.0
+margin_bottom = 170.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -126,39 +90,19 @@ script = ExtResource( 1 )
 [node name="StructureTimer" type="Timer" parent="MarginContainer/VBoxContainer/Control/EntitySpawner"]
 autostart = true
 
-[node name="PreviewPlayer" type="KinematicBody2D" parent="MarginContainer/VBoxContainer/Control" instance=ExtResource( 53 )]
+[node name="PreviewPlayer" parent="MarginContainer/VBoxContainer/Control" instance=ExtResource( 53 )]
 unique_name_in_owner = true
 position = Vector2( 120, 64 )
-collision_layer = 2
-collision_mask = 128
-script = ExtResource( 5 )
-crit_sounds = [ ExtResource( 10 ), ExtResource( 15 ), ExtResource( 9 ), ExtResource( 16 ) ]
-hurt_sounds = [ ExtResource( 41 ), ExtResource( 35 ), ExtResource( 29 ), ExtResource( 44 ) ]
-burn_sounds = [ ExtResource( 13 ), ExtResource( 18 ), ExtResource( 21 ), ExtResource( 24 ) ]
-dodge_sounds = [ ExtResource( 12 ), ExtResource( 22 ) ]
-stats = ExtResource( 26 )
-always_play_hurt_sound = true
-hp_regen_sounds = [ ExtResource( 33 ), ExtResource( 42 ) ]
-step_sounds = [ ExtResource( 31 ), ExtResource( 39 ), ExtResource( 38 ), ExtResource( 32 ), ExtResource( 43 ), ExtResource( 40 ) ]
-alien_sounds = [ ExtResource( 34 ), ExtResource( 36 ) ]
 
-[node name="Dummy" type="KinematicBody2D" parent="MarginContainer/VBoxContainer/Control" instance=ExtResource( 57 )]
+[node name="Dummy" parent="MarginContainer/VBoxContainer/Control" instance=ExtResource( 57 )]
 unique_name_in_owner = true
 position = Vector2( 240, 64 )
-collision_layer = 4
-collision_mask = 132
-script = ExtResource( 3 )
-crit_sounds = [ ExtResource( 10 ), ExtResource( 15 ), ExtResource( 9 ), ExtResource( 16 ) ]
-hurt_sounds = [ ExtResource( 23 ), ExtResource( 20 ), ExtResource( 19 ), ExtResource( 7 ), ExtResource( 14 ), ExtResource( 11 ), ExtResource( 8 ), ExtResource( 17 ) ]
-burn_sounds = [ ExtResource( 13 ), ExtResource( 18 ), ExtResource( 21 ), ExtResource( 24 ) ]
-dodge_sounds = [ ExtResource( 12 ), ExtResource( 22 ) ]
-stats = ExtResource( 27 )
 
 [node name="Outline" type="NinePatchRect" parent="MarginContainer/VBoxContainer/Control"]
 modulate = Color( 0.470588, 0.403922, 0.345098, 1 )
 show_behind_parent = true
-margin_right = 349.0
-margin_bottom = 139.0
+margin_right = 345.0
+margin_bottom = 135.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource( 37 )
