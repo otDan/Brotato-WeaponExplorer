@@ -2,17 +2,15 @@ extends Node
 
 const MOD_NAME = "otDan-WeaponExplorer"
 
-var mod_loader
 var dir = ""
 var translations_dir = ""
 var extensions_dir = ""
 
 
-func _init(_mod_loader = ModLoader):
-	ModLoaderUtils.log_info("Init", MOD_NAME)
-	mod_loader = _mod_loader
+func _init(_mod_loader):
+	ModLoaderLog.info("Init", MOD_NAME)
 
-	dir = mod_loader.UNPACKED_DIR + MOD_NAME + "/"
+	dir = ModLoaderMod.get_unpacked_dir() + MOD_NAME + "/"
 	translations_dir = dir + "translations/"
 	extensions_dir = dir + "extensions/"
 
@@ -22,19 +20,19 @@ func _init(_mod_loader = ModLoader):
 
 
 func _ready():
-	ModLoaderUtils.log_success("Loaded", MOD_NAME)
+	ModLoaderLog.success("Loaded", MOD_NAME)
 
 
 func _install_translations()->void:
-	mod_loader.add_translation_from_resource(translations_dir + "weaponexplorer_translation.en.translation")
+	ModLoaderMod.add_translation(translations_dir + "weaponexplorer_translation.en.translation")
 
 
 func _install_script_extensions():
-	mod_loader.install_script_extension(extensions_dir + "singletons/weapon_service.gd")
-	mod_loader.install_script_extension(extensions_dir + "ui/menus/title_screen/title_screen_menus.gd")
-	mod_loader.install_script_extension(extensions_dir + "ui/menus/pages/menu_choose_options.gd")
-	mod_loader.install_script_extension(extensions_dir + "ui/menus/run/character_selection.gd")
-	mod_loader.install_script_extension(extensions_dir + "ui/menus/run/weapon_selection.gd")
+	ModLoaderMod.install_script_extension(extensions_dir + "singletons/weapon_service.gd")
+	ModLoaderMod.install_script_extension(extensions_dir + "ui/menus/title_screen/title_screen_menus.gd")
+	ModLoaderMod.install_script_extension(extensions_dir + "ui/menus/pages/menu_choose_options.gd")
+	ModLoaderMod.install_script_extension(extensions_dir + "ui/menus/run/character_selection.gd")
+	ModLoaderMod.install_script_extension(extensions_dir + "ui/menus/run/weapon_selection.gd")
 
 
 func _add_child_classes():
