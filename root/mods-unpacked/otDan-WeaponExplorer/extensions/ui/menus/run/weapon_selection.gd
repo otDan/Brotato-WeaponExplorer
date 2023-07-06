@@ -1,10 +1,8 @@
 extends "res://ui/menus/run/weapon_selection.gd"
 
-onready var WeaponExplorer = get_node("/root/ModLoader/otDan-WeaponExplorer/WeaponExplorer")
-
 
 func _ready():
-	var selected_weapon = WeaponExplorer.selected_weapon
+	var selected_weapon = get("WeaponExplorer").selected_weapon
 	if selected_weapon == null:
 		return
 	for element in _inventory.get_children():
