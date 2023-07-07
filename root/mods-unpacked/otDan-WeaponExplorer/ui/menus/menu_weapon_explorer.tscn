@@ -1,0 +1,69 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://mods-unpacked/otDan-WeaponExplorer/ui/menus/menu_weapon_explorer.gd" type="Script" id=1]
+[ext_resource path="res://mods-unpacked/otDan-SharedResources/ui/menus/parts/mod_toggle.tscn" type="PackedScene" id=2]
+[ext_resource path="res://mods-unpacked/otDan-WeaponExplorer/ui/menus/parts/weapon_preview_container.tscn" type="PackedScene" id=3]
+[ext_resource path="res://mods-unpacked/otDan-SharedResources/ui/menus/content_explorer.tscn" type="PackedScene" id=4]
+[ext_resource path="res://mods-unpacked/otDan-WeaponExplorer/ui/menus/parts/weapon_toggle.tscn" type="PackedScene" id=5]
+[ext_resource path="res://mods-unpacked/otDan-SharedResources/ui/menus/parts/character_toggle.tscn" type="PackedScene" id=6]
+[ext_resource path="res://mods-unpacked/otDan-SharedResources/ui/menus/parts/fake_player.tscn" type="PackedScene" id=7]
+
+[node name="WeaponExplorer" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+mod_toggle = ExtResource( 2 )
+character_toggle = ExtResource( 6 )
+fake_player_scene = ExtResource( 7 )
+weapon_toggle = ExtResource( 5 )
+
+[node name="ContentExplorer" parent="." instance=ExtResource( 4 )]
+unique_name_in_owner = true
+
+[node name="NotUnlocked" parent="ContentExplorer/VBoxContainer/HBoxContainer/SideContainer" index="0"]
+margin_top = 102.0
+margin_bottom = 137.0
+
+[node name="ContentPanelUI" parent="ContentExplorer/VBoxContainer/HBoxContainer/SideContainer" index="1"]
+margin_top = 153.0
+margin_bottom = 403.0
+
+[node name="WeaponPreviewContainer" parent="ContentExplorer/VBoxContainer/HBoxContainer/SideContainer" index="2" instance=ExtResource( 3 )]
+unique_name_in_owner = true
+
+[node name="MarginContainer" parent="ContentExplorer/VBoxContainer/HBoxContainer/SideContainer/WeaponPreviewContainer" index="0"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 370.0
+margin_bottom = 195.0
+
+[node name="VBoxContainer" parent="ContentExplorer/VBoxContainer/HBoxContainer/SideContainer/WeaponPreviewContainer/MarginContainer" index="0"]
+margin_right = 357.0
+margin_bottom = 182.0
+
+[node name="Label" parent="ContentExplorer/VBoxContainer/HBoxContainer/SideContainer/WeaponPreviewContainer/MarginContainer/VBoxContainer" index="0"]
+margin_right = 349.0
+
+[node name="Control" parent="ContentExplorer/VBoxContainer/HBoxContainer/SideContainer/WeaponPreviewContainer/MarginContainer/VBoxContainer" index="1"]
+margin_right = 349.0
+margin_bottom = 174.0
+
+[node name="Outline" parent="ContentExplorer/VBoxContainer/HBoxContainer/SideContainer/WeaponPreviewContainer/MarginContainer/VBoxContainer/Control" index="4"]
+margin_right = 349.0
+margin_bottom = 139.0
+
+[node name="Tags" parent="ContentExplorer/VBoxContainer/HBoxContainer/SideContainer" index="3"]
+margin_top = 635.0
+margin_bottom = 865.0
+
+[node name="Label" parent="ContentExplorer/VBoxContainer/HBoxContainer/SideContainer/Tags/MarginContainer/VBoxContainer" index="0"]
+text = "MENU_WEAPON_TAGGED_CHARACTERS"
+
+[connection signal="pressed" from="ContentExplorer/VBoxContainer/HBoxContainer/SideContainer/Tags/MarginContainer/VBoxContainer/StartRunButton" to="." method="_on_StartRunButton_pressed"]
+[connection signal="pressed" from="ContentExplorer/VBoxContainer/Buttons/BackButton" to="." method="_on_BackButton_pressed"]
+
+[editable path="ContentExplorer"]
+[editable path="ContentExplorer/VBoxContainer/HBoxContainer/ModColumn/ModPanelContainer"]
+[editable path="ContentExplorer/VBoxContainer/HBoxContainer/SideContainer/ContentPanelUI"]
+[editable path="ContentExplorer/VBoxContainer/HBoxContainer/SideContainer/ContentPanelUI/MarginContainer/VBoxContainer/ItemDescription"]
+[editable path="ContentExplorer/VBoxContainer/HBoxContainer/SideContainer/WeaponPreviewContainer"]

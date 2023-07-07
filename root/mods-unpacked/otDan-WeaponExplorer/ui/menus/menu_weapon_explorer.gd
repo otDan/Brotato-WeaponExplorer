@@ -1,34 +1,40 @@
 class_name WeaponExplorerMenu
-extends MarginContainer
+extends Control
 
 signal back_button_pressed
 
 export (PackedScene) var mod_toggle
-export (PackedScene) var weapon_toggle
 export (PackedScene) var character_toggle
+export (PackedScene) var fake_player_scene
+export (PackedScene) var weapon_toggle
 
 onready var ContentLoader = get_node("/root/ModLoader/Darkly77-ContentLoader/ContentLoader")
 onready var WeaponExplorer = get_node("/root/ModLoader/otDan-WeaponExplorer/WeaponExplorer")
 onready var StringComparer = get_node("/root/ModLoader/otDan-WeaponExplorer/WeaponStringComparer")
 
-onready var mod_container = $"%ModContainer"
-onready var weapon_container = $"%WeaponContainer"
-onready var not_unlocked = $"%NotUnlocked"
-onready var weapon_panel_ui = $"%WeaponPanelUI"
-onready var weapon_tags = $"%WeaponTags"
-onready var character_container = $"%CharacterContainer"
-onready var start_run_button = $"%StartRunButton"
+onready var content_explorer = $"%ContentExplorer"
+onready var weapon_container = content_explorer.get_node("%ContentContainer")
+onready var not_unlocked = content_explorer.get_node("%NotUnlocked")
+onready var weapon_panel_ui = content_explorer.get_node("%ContentPanelUI")
+onready var weapon_tags = content_explorer.get_node("%Tags")
+onready var character_container = content_explorer.get_node("%CharacterContainer")
+onready var start_run_button = content_explorer.get_node("%StartRunButton")
+
+onready var mod_panel_container = content_explorer.get_node("%ModPanelContainer")
+onready var mod_container = mod_panel_container.get_node("%ModContainer")
 
 onready var weapon_preview_container = $"%WeaponPreviewContainer"
 onready var _effects_manager = weapon_preview_container.get_node("%EffectsManager")
 onready var _floating_text_manager = weapon_preview_container.get_node("%FloatingTextManager")
 onready var entity_spawner: EntitySpawner = weapon_preview_container.get_node("%EntitySpawner")
-onready var preview_player = weapon_preview_container.get_node("%PreviewPlayer")
+
+onready var scene_holder = weapon_preview_container.get_node("%SceneHolder")
 onready var dummy = weapon_preview_container.get_node("%Dummy")
 
 var weapon_dictionary: Dictionary
 var character_toggle_dictionary: Dictionary
 var mod_weapons: Dictionary
+var fake_player: Player
 
 var visible_weapons: Dictionary
 enum visible_keys {
@@ -40,12 +46,12 @@ enum visible_keys {
 func _ready():
 	var _size_changed = get_tree().root.connect("size_changed", self, "_on_viewport_size_changed")
 
-	connect_visual_effects(preview_player)
 	connect_visual_effects(dummy)
 
 
 func init() -> void:
 	_on_viewport_size_changed()
+	
 	reset()
 
 	var first_item: Button = null
@@ -113,8 +119,13 @@ func reset() -> void:
 
 	mod_weapons.clear()
 
-	reset_preview_player()
+	reset_fake_player()
 	reset_dummy()
+	
+	
+func full_reset() -> void:
+	reset()
+	delete_fake_player()
 
 
 func get_string_after_character(a: String, character: String) -> String:
@@ -130,14 +141,14 @@ func weapon_toggle_focus_entered(weapon_data: WeaponData) -> void:
 	start_run_button.disabled = true
 	weapon_panel_ui.set_data(weapon_data)
 
-	reset_preview_player()
+	reset_fake_player()
 	reset_dummy()
 
 	if weapon_data.type == WeaponData.Type.MELEE:
-		preview_player.position = Vector2(120, 64)
+		fake_player.position = Vector2(120, 64)
 		dummy.position = Vector2(240, 64)
 	else:
-		preview_player.position = Vector2(60, 64)
+		fake_player.position = Vector2(60, 64)
 		dummy.position = Vector2(280, 64)
 
 	if ProgressData.weapons_unlocked.has(weapon_data.weapon_id):
@@ -156,7 +167,7 @@ func weapon_toggle_focus_entered(weapon_data: WeaponData) -> void:
 				has_character = true
 
 		weapon_tags.visible = has_character
-		preview_player.add_weapon(weapon_data, 1)
+		fake_player.add_weapon(weapon_data, 1)
 		return
 
 	var weapon_description: ItemDescription = weapon_panel_ui._item_description
@@ -169,13 +180,21 @@ func weapon_toggle_focus_entered(weapon_data: WeaponData) -> void:
 	weapon_tags.visible = false
 
 
-func reset_preview_player() -> void:
-	preview_player._entity_spawner_ref = entity_spawner
-	var weapons = preview_player.current_weapons.duplicate()
-	for weapon in weapons:
-		weapon.queue_free()
-	preview_player.current_weapons.clear()
-
+func reset_fake_player() -> void:
+	if not fake_player == null:
+		fake_player.queue_free()
+		
+	fake_player = fake_player_scene.instance()
+	scene_holder.add_child(fake_player)
+	fake_player._entity_spawner_ref = entity_spawner
+	connect_visual_effects(fake_player)
+	
+	
+func delete_fake_player():
+	if not fake_player == null:
+		fake_player.queue_free()
+	fake_player = null
+	
 
 func reset_dummy() -> void:
 	dummy._entity_spawner_ref = entity_spawner
@@ -256,7 +275,7 @@ func connect_visual_effects(unit:Unit) -> void:
 
 
 func _on_BackButton_pressed() -> void:
-	reset()
+	full_reset()
 	emit_signal("back_button_pressed")
 
 

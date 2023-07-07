@@ -6,7 +6,7 @@ var _menu_weapon_explorer
 
 
 func _ready():
-	_menu_weapon_explorer = load("res://mods-unpacked/otDan-WeaponExplorer/ui/menus/items/weapon_explorer.tscn").instance()
+	_menu_weapon_explorer = load("res://mods-unpacked/otDan-WeaponExplorer/ui/menus/menu_weapon_explorer.tscn").instance()
 	add_child(_menu_weapon_explorer)
 	_menu_weapon_explorer.visible = false
 	_menu_weapon_explorer.connect("back_button_pressed", self, "weapon_explorer_back_button_pressed")
@@ -15,7 +15,7 @@ func _ready():
 
 func back() -> void:
 	.back()
-	_menu_weapon_explorer.reset()
+	_menu_weapon_explorer.full_reset()
 
 
 func weapon_explorer_button_pressed() -> void:
