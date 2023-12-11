@@ -32,7 +32,6 @@ func _install_translations()->void:
 
 
 func _install_script_extensions():
-	ModLoaderMod.install_script_extension(extensions_dir + "singletons/weapon_service.gd")
 	ModLoaderMod.install_script_extension(extensions_dir + "ui/menus/title_screen/title_screen_menus.gd")
 	ModLoaderMod.install_script_extension(extensions_dir + "ui/menus/pages/menu_choose_options.gd")
 	ModLoaderMod.install_script_extension(extensions_dir + "ui/menus/run/character_selection.gd")
